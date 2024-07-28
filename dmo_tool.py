@@ -56,7 +56,6 @@ i love u all :3
 """)
 
 def update_script():
-  cls()
     os.system('git fetch origin main')  
     local_commit = os.popen('git rev-parse HEAD').read().strip()
     remote_commit = os.popen('git rev-parse origin/main').read().strip()
