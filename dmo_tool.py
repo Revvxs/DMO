@@ -4,7 +4,6 @@ import time
 import ipinfo
 import socket
 import sys
-import subprocess
 
 RED = Fore.RED
 BLUE = Fore.BLUE
@@ -55,25 +54,21 @@ i love u all :3
 [6] To Close DMO
 """)
 
-def copy_to_clipboard(text):
-    process = subprocess.Popen(['termux-clipboard-set'], stdin=subprocess.PIPE, close_fds=True)
-    process.communicate(input=text.encode('utf-8'))
-
 def update_script():
-    print(GREEN + "Checking for updates...")
-    os.system('git fetch origin main')  
+   print(GREEN + "Checking for updates...")
+os.system('git fetch origin main')
 
-    local_commit = os.popen('git rev-parse HEAD').read().strip()
-    remote_commit = os.popen('git rev-parse origin/main').read().strip()
+local_commit = os.popen('git rev-parse HEAD').read().strip()
+remote_commit = os.popen('git rev-parse origin/main').read().strip()
 
-    if local_commit == remote_commit:
-        print(RED + "There isn't any newer updates. Please wait until the next update.")
-    else:
-        os.system('git pull origin main')
-        print(GREEN + "Update complete. Restarting script...")
-        time.sleep(2)
-        cls()
-        os.execv(sys.executable, ['python'] + sys.argv)
+if local_commit == remote_commit:
+    print(RED + "There isn't any newer updates. Please wait until the next update." )
+else:
+    os.system('git pull origin main')
+    print(GREEN + "Update complete. Restarting script...")
+    time.sleep(2)
+    cls()
+    os.execv(sys.executable, ['python'] + sys.argv)
 
 def iplookup():
     access_token = 'cb657df67f619c'
@@ -95,8 +90,6 @@ def iplookup():
                 f"Longitude: {details.longitude}"
             )
             print(ip_info)
-            copy_to_clipboard(ip_info)
-            print("Copied to clipboard")
             time.sleep(10)
             cls()
             menu()
