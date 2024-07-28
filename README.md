@@ -9,7 +9,7 @@ To install and run the tool, execute the following commands in Termux:
 ```bash
 pkg update && pkg upgrade -y
 pkg install git -y
-git clone https://github.com/yourusername/termux-tool.git
-cd termux-tool
+git clone https://github.com/Revvxs/TermuxToolHub.git
+cd TermuxToolHub
 chmod +x install.sh
 ./install.sh
