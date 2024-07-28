@@ -94,7 +94,7 @@ def iplookup():
                 f"Longitude: {details.longitude}"
             )
             print(ip_info)
-             copy_to_clipboard(ip_info)
+            copy_to_clipboard(ip_info)
             print("Copied to clipboard")
             time.sleep(10)
             cls()
