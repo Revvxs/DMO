@@ -4,6 +4,7 @@ import time
 import ipinfo
 import socket
 import sys
+import subprocess
 
 RED = Fore.RED
 BLUE = Fore.BLUE
@@ -55,7 +56,7 @@ i love u all :3
 """)
 
 def copy_to_clipboard(text):
-    process = subprocess.Popen(['termux-clipboard-set'], stdin=process.PIPE, close_fds=True)
+    process = subprocess.Popen(['termux-clipboard-set'], stdin=subprocess.PIPE, close_fds=True)
     process.communicate(input=text.encode('utf-8'))
 
 def update_script():
