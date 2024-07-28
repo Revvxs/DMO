@@ -3,6 +3,8 @@ import os
 import time
 import ipinfo
 import socket
+import pyperclip 
+import sys
 
 RED = Fore.RED
 BLUE = Fore.BLUE
@@ -50,7 +52,24 @@ def menu():
 [5] Coming Soon
 ═════════════════════════════
 i love u all :3
+[6] To Close DMO
 """)
+
+def update_script():
+  cls()
+    print(GREEN + "Checking for updates...")
+    os.system('git fetch origin main')  
+    local_commit = os.popen('git rev-parse HEAD').read().strip()
+    remote_commit = os.popen('git rev-parse origin/main').read().strip()
+
+    if local_commit == remote_commit:
+        print(RED + "There isn't any newer updates. Please wait until the next update.")
+    else:
+        os.system('git pull origin main')
+        print(GREEN + "Update complete. Restarting script...")
+        time.sleep(2)
+        cls()
+        os.execv(sys.executable, ['python'] + sys.argv)
 
 def iplookup():
     access_token = 'cb657df67f619c'
@@ -62,14 +81,19 @@ def iplookup():
         if choice == "1":
             ip_address = input("IP >> ")
             details = handler.getDetails(ip_address)
-            print("IP:", details.ip)
-            print("City:", details.city)
-            print("Region:", details.region)
-            print("Country:", details.country)
-            print("Organization:", details.org)
-            print("Latitude:", details.latitude)
-            print("Longitude:", details.longitude)
-            time.sleep(5)
+            ip_info = (
+                f"IP: {details.ip}\n"
+                f"City: {details.city}\n"
+                f"Region: {details.region}\n"
+                f"Country: {details.country}\n"
+                f"Organization: {details.org}\n"
+                f"Latitude: {details.latitude}\n"
+                f"Longitude: {details.longitude}"
+            )
+            print(ip_info)
+            pyperclip.copy(ip_info)
+            print("Copied to clipboard")
+            time.sleep(10)
             cls()
             menu()
 
@@ -79,9 +103,7 @@ def iplookup():
             menu()
 
         elif choice == "3":
-            os.system('termux-open-url https://github.com/umsoidonthavethegithubsetupyetsoilldoitnextupd')
-            cls()
-            menu()
+            update_script()
 
         elif choice == "4":
             hostname = socket.gethostname()
