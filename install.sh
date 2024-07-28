@@ -4,7 +4,7 @@
 pkg update && pkg upgrade -y
 pkg install python git -y
 pip install colorama ipinfo
-pip install pyperclip
+pkg install xclip
 
 # Clone the repository
 git clone https://github.com/Revvxs/DOM.git
