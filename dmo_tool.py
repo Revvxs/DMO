@@ -55,6 +55,10 @@ i love u all :3
 [6] To Close DMO
 """)
 
+def copy_to_clipboard(text):
+    process = subprocess.Popen(['xclip', '-selection', 'clipboard'], stdin=subprocess.PIPE, close_fds=True)
+    process.communicate(input=text.encode('utf-8'))
+
 def update_script():
     print(GREEN + "Checking for updates...")
     os.system('git fetch origin main')  
