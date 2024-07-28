@@ -4,7 +4,8 @@
 pkg update && pkg upgrade -y
 pkg install python git -y
 pip install colorama ipinfo
-pkg install xclip
+pkg install termux-api
+
 
 # Clone the repository
 git clone https://github.com/Revvxs/DOM.git
