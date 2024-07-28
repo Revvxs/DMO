@@ -1,7 +1,7 @@
 # Termux DMO
 
 ## Description
-A multi-functional tool for Termux with features like IP address lookup, access to DMO Discord, and more.
+A multi-functional tool ported to termux.
 
 ## Installation
 To install and run the tool, execute the following commands in Termux:
