@@ -3,7 +3,6 @@ import os
 import time
 import ipinfo
 import socket
-import pyperclip 
 import sys
 
 RED = Fore.RED
@@ -56,7 +55,7 @@ i love u all :3
 """)
 
 def copy_to_clipboard(text):
-    process = subprocess.Popen(['xclip', '-selection', 'clipboard'], stdin=subprocess.PIPE, close_fds=True)
+    process = subprocess.Popen(['termux-clipboard-set'], stdin=subprocess.PIPE, close_fds=True)
     process.communicate(input=text.encode('utf-8'))
 
 def update_script():
