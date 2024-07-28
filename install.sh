@@ -6,7 +6,7 @@ pkg install python git -y
 pip install colorama ipinfo
 
 # Clone the repository
-git clone https://github.com/yourusername/termux-tool.git
+git clone https://github.com/Revvxs/DOM.git
 
 # Navigate to the repository directory
 cd termux-tool
