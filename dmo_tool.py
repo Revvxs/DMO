@@ -1,4 +1,4 @@
-from colorama import Fore, Style 
+from colorama import Fore, Style
 import os
 import time
 import ipinfo
@@ -11,52 +11,45 @@ CYAN = Fore.CYAN
 BLACK = Fore.BLACK
 WHITE = Fore.WHITE
 
-print(RED + " DMO MultiTool Booting... ")
-time.sleep(2)
-
 def cls():
     os.system('clear')
 
 def intro():
+    cls()
     print(RED + """
 ┳┓┏┳  ┳┳┓┏┓┏┳  ┏┓┳┓┳┏┓┳┳┓┏┓┓
-┃┃ ┃  ┃┃┃┃┃ ┃  ┃┃┣┫┃┃┓┃┃┃┣┫┃ ___________________________
-┻┛┗┛  ┛ ┗┣┛┗┛  ┗┛┛┗┻┗┛┻┛┗┛┗┗┛                 
-  ██████╗ ███╗   ███╗ ██████╗          
-  ██╔══██╗████╗ ████║██╔═══██╗       
-  ██║  ██║██╔████╔██║██║   ██║  
-  ██║  ██║██║╚██╔╝██║██║   ██║
-  ██████╔╝██║ ╚═╝ ██║╚██████╔╝
-  ╚═════╝ ╚═╝     ╚═╝ ╚═════╝ 
-                           ____________________________
+┃┃ ┃  ┃┃┃┃┃ ┃  ┃┃┣┫┃┃┓┃┃┃┣┫┃ 
+┻┛┗┛  ┛ ┗┣┛┗┛  ┗┛┛┗┻┗┛┻┛┗┛┗┗┛
+_____________________________
+██████╗ ███╗   ███╗ ██████╗ 
+██╔══██╗████╗ ████║██╔═══██╗
+██║  ██║██╔████╔██║██║   ██║
+██║  ██║██║╚██╔╝██║██║   ██║
+██████╔╝██║ ╚═╝ ██║╚██████╔╝
+╚═════╝ ╚═╝     ╚═╝ ╚═════╝ 
+_____________________________
 Welcome to DMO!
-
 """)
-intro()
-time.sleep(2)
-cls()
+    time.sleep(2)
+    cls()
 
 def menu():
+    cls()
     print(RED + """
-
-                        
-                                  ██████╗ ███╗   ███╗ ██████╗ 
-                                  ██╔══██╗████╗ ████║██╔═══██╗
-                                  ██║  ██║██╔████╔██║██║   ██║
-                                  ██║  ██║██║╚██╔╝██║██║   ██║
-                                  ██████╔╝██║ ╚═╝ ██║╚██████╔╝
-                                  ╚═════╝ ╚═╝     ╚═╝ ╚═════╝ 
-                   ══════════════════════════════════════════════════════════
-                                           [ USER ] 
-                                            
-                   [1] IP Address Lookup              [4] Find Your Device's IP
-
-                   [2] DMO Discord                    [5] soon
-
-                              [3] Check for updates on DMO
-
-                    ══════════════════════════════════════════════════════════
-                                       i love u all :3
+██████╗ ███╗   ███╗ ██████╗ 
+██╔══██╗████╗ ████║██╔═══██╗
+██║  ██║██╔████╔██║██║   ██║
+██║  ██║██║╚██╔╝██║██║   ██║
+██████╔╝██║ ╚═╝ ██║╚██████╔╝
+╚═════╝ ╚═╝     ╚═╝ ╚═════╝ 
+═════════════════════════════
+[1] IP Address Lookup
+[2] DMO Discord
+[3] Check for updates on DMO
+[4] Find Your Device's IP
+[5] Coming Soon
+═════════════════════════════
+i love u all :3
 """)
 
 def iplookup():
@@ -64,18 +57,18 @@ def iplookup():
     handler = ipinfo.getHandler(access_token)
 
     while True:
-        choice = input("                                >> ")
+        choice = input(">> ")
 
         if choice == "1":
-            ip_address = input(f"                             IP >> ")
+            ip_address = input("IP >> ")
             details = handler.getDetails(ip_address)
-            print("                                 IP:", details.ip)
-            print("                                 City:", details.city)
-            print("                                 Region:", details.region)
-            print("                                 Country:", details.country)
-            print("                                 Organization:", details.org)
-            print("                                 Latitude:", details.latitude)
-            print("                                 Longitude:", details.longitude)
+            print("IP:", details.ip)
+            print("City:", details.city)
+            print("Region:", details.region)
+            print("Country:", details.country)
+            print("Organization:", details.org)
+            print("Latitude:", details.latitude)
+            print("Longitude:", details.longitude)
             time.sleep(5)
             cls()
             menu()
@@ -87,20 +80,29 @@ def iplookup():
 
         elif choice == "3":
             os.system('termux-open-url https://github.com/umsoidonthavethegithubsetupyetsoilldoitnextupd')
+            cls()
+            menu()
 
         elif choice == "4":
             hostname = socket.gethostname()
             IPAddr = socket.gethostbyname(hostname)
             print("Your Device IP Address is:", IPAddr)
+            time.sleep(5)
+            cls()
+            menu()
 
         elif choice == "5":
             os.system('termux-open-url ""')
+            cls()
+            menu()
 
         elif choice == "6":
-            print("                                bye love u :3 ")
+            cls()
+            print("bye love u :3")
             time.sleep(1)
             break
 
 cls()
+intro()
 menu()
 iplookup()
