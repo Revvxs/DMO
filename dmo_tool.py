@@ -57,16 +57,16 @@ i love u all :3
 
 def update_script():
   cls()
-    print(GREEN + "Checking for updates...")
+    print("Checking for updates...")
     os.system('git fetch origin main')  
     local_commit = os.popen('git rev-parse HEAD').read().strip()
     remote_commit = os.popen('git rev-parse origin/main').read().strip()
 
     if local_commit == remote_commit:
-        print(RED + "There isn't any newer updates. Please wait until the next update.")
+        print("There isn't any newer updates. Please wait until the next update.")
     else:
         os.system('git pull origin main')
-        print(GREEN + "Update complete. Restarting script...")
+        print("Update complete. Restarting script...")
         time.sleep(2)
         cls()
         os.execv(sys.executable, ['python'] + sys.argv)
